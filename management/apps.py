@@ -4,4 +4,4 @@ from django.apps import AppConfig
 
 
 class MagagementConfig(AppConfig):
-    name = 'magagement'
+    name = 'management'

@@ -1,3 +1,4 @@
+# -*- coding:utf-8 -*-
 """shanbaydemo URL Configuration
 
 The `urlpatterns` list routes URLs to views. For more information please see:
@@ -13,9 +14,20 @@ Including another URLconf
     1. Import the include() function: from django.conf.urls import url, include
     2. Add a URL to urlpatterns:  url(r'^blog/', include('blog.urls'))
 """
-from django.conf.urls import url
+from django.conf.urls import url,include  #用到include方式，方便管理
 from django.contrib import admin
+
+from django.contrib.staticfiles import views
+from django.conf import settings
 
 urlpatterns = [
     url(r'^admin/', admin.site.urls),
+    url(r'', include('management.urls'))
 ]
+#
+if settings.DEBUG:
+    urlpatterns += [
+        url(r'^static/(?P<path>.*)$', views.static.serve, {'document_root': settings.STATIC_ROOT}, name="static"),
+        url(r'^media/(?P<path>.*)$', views.static.serve, {'document_root': settings.MEDIA_ROOT}, name="media"),
+        url(r'^comments/', include('django_comments.urls'))
+    ]

@@ -1,3 +1,4 @@
+# -*- coding:utf-8 -*-
 """
 Django settings for shanbaydemo project.
 
@@ -37,13 +38,20 @@ INSTALLED_APPS = [
     'django.contrib.sessions',
     'django.contrib.messages',
     'django.contrib.staticfiles',
+
+    'management',  #导入应用模块
+
+    'django_comments', #导入系统自带评论模块
+    'django.contrib.sites', #必须加上 原因不明...
 ]
+
+SITE_ID=1
 
 MIDDLEWARE_CLASSES = [
     'django.middleware.security.SecurityMiddleware',
     'django.contrib.sessions.middleware.SessionMiddleware',
     'django.middleware.common.CommonMiddleware',
-    'django.middleware.csrf.CsrfViewMiddleware',
+    #'django.middleware.csrf.CsrfViewMiddleware',  原因是因为添加评论模块后验证出错，直接关掉了。
     'django.contrib.auth.middleware.AuthenticationMiddleware',
     'django.contrib.auth.middleware.SessionAuthenticationMiddleware',
     'django.contrib.messages.middleware.MessageMiddleware',
@@ -55,7 +63,7 @@ ROOT_URLCONF = 'shanbaydemo.urls'
 TEMPLATES = [
     {
         'BACKEND': 'django.template.backends.django.DjangoTemplates',
-        'DIRS': [],
+        'DIRS': [os.path.join(BASE_DIR, 'templates')], #添加模板路径
         'APP_DIRS': True,
         'OPTIONS': {
             'context_processors': [
@@ -104,11 +112,11 @@ AUTH_PASSWORD_VALIDATORS = [
 # Internationalization
 # https://docs.djangoproject.com/en/1.9/topics/i18n/
 
-LANGUAGE_CODE = 'en-us'
+LANGUAGE_CODE = 'zh-hans'  #汉字的编码方式
 
-TIME_ZONE = 'UTC'
+TIME_ZONE = 'Asia/Harbin'  #时区
 
-USE_I18N = True
+USE_I18N = True            #竟然没有绿，我醉了
 
 USE_L10N = True
 
@@ -118,4 +126,14 @@ USE_TZ = True
 # Static files (CSS, JavaScript, Images)
 # https://docs.djangoproject.com/en/1.9/howto/static-files/
 
+
 STATIC_URL = '/static/'
+
+STATIC_ROOT = os.path.join(BASE_DIR, 'static').replace('\\', '/')  #定义了一些路径变量
+
+MEDIA_URL = '/media/'
+
+MEDIA_ROOT = os.path.join(BASE_DIR, 'media').replace('\\', '/')
+
+LOGIN_URL = '/login/'
+
