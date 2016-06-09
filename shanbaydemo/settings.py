@@ -14,7 +14,7 @@ https://docs.djangoproject.com/en/1.9/ref/settings/
 import os
 
 # Build paths inside the project like this: os.path.join(BASE_DIR, ...)
-BASE_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
+BASE_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__))) #工程目录变量
 
 
 # Quick-start development settings - unsuitable for production
@@ -63,7 +63,7 @@ ROOT_URLCONF = 'shanbaydemo.urls'
 TEMPLATES = [
     {
         'BACKEND': 'django.template.backends.django.DjangoTemplates',
-        'DIRS': [os.path.join(BASE_DIR, 'templates')], #添加模板路径
+        'DIRS': [os.path.join(BASE_DIR, 'templates')], #添加模板路径，拼接而来
         'APP_DIRS': True,
         'OPTIONS': {
             'context_processors': [
@@ -127,9 +127,9 @@ USE_TZ = True
 # https://docs.djangoproject.com/en/1.9/howto/static-files/
 
 
-STATIC_URL = '/static/'
+STATIC_URL = '/static/' #就可以访问到http://127.0.0.1:8000/static/
 
-STATIC_ROOT = os.path.join(BASE_DIR, 'static').replace('\\', '/')  #定义了一些路径变量
+STATIC_ROOT = os.path.join(BASE_DIR, 'magnagement/static').replace('\\', '/')  #定义了一些路径变量,源代码书写有误，他马虎的弄错了static的路径
 
 MEDIA_URL = '/media/'
 

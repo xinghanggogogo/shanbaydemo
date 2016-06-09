@@ -74,7 +74,7 @@ def login(request):
 
 
 def logout(request):
-    auth.logout(request)
+    auth.logout(request)   #系统自带的登出函数
     return HttpResponseRedirect(reverse('homepage'))
 
 
@@ -130,7 +130,7 @@ def add_book(request):
 def view_book_list(request):
     user = request.user if request.user.is_authenticated() else None
     category_list = Book.objects.values_list('category', flat=True).distinct()
-    query_category = request.GET.get('category', 'all')
+    query_category = request.GET.get('category', 'all') #获取URL中参数category的值；如果请求里没有category，则给qu_c赋值all
     if (not query_category) or Book.objects.filter(category=query_category).count() is 0:
         query_category = 'all'
         book_list = Book.objects.all()

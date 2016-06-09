@@ -25,7 +25,7 @@ urlpatterns = [
     url(r'', include('management.urls'))
 ]
 #
-if settings.DEBUG:
+if settings.DEBUG: #如果DEBUG为true，静态媒体的使用，对于任何满足正则表达式的url，全部serve到指定路径中去
     urlpatterns += [
         url(r'^static/(?P<path>.*)$', views.static.serve, {'document_root': settings.STATIC_ROOT}, name="static"),
         url(r'^media/(?P<path>.*)$', views.static.serve, {'document_root': settings.MEDIA_ROOT}, name="media"),
