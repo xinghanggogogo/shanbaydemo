@@ -41,6 +41,16 @@
                     <h3>类别：{{ book.category }}</h3>
                     <h3>出版日期：{{ book.publish_date|date:"Y-m-d" }}</h3>
                     <h3>贝壳数：{{ book.price|floatformat:2 }}</h3>
+                    <h3>
+                    <a href="{% url 'wordslist'%}?classs={{ book.name}}">开始背单词(点我)</a>
+                    </h3>
+                    <hr>
+                    <form action="/wordslist/" method="post">
+                        <input cols=3 row=1 name='num'>
+                        <input type="submit" value="我要背这么多" id="id_submit">
+                    </form>
+                    <hr>
+
                 </div>
             </div>
         </div>
@@ -50,7 +60,7 @@
     <form action="/sub_comment/" method="post">
         <textarea cols=80 row=3 name='comment_content'></textarea>
         <input type="hidden" name="book_id" value="{{book.id}}"/>
-        <input type="submit" value="Add comment" id="id_submit">
+        <input type="submit" value="评价这本单词书" id="id_submit">
     </form>
     <hr>
 <div>

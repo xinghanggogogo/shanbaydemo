@@ -5,7 +5,7 @@ from django.contrib.auth.decorators import user_passes_test, login_required #自
 from django.contrib.auth.models import User  #User和anth表
 from django.contrib import auth
 from django.core.paginator import Paginator, EmptyPage, PageNotAnInteger #分页系统
-from management.models import MyUser, Book, Img    #导入自定义model
+from management.models import MyUser, Book, Img, word  #导入自定义model
 from django.core.urlresolvers import reverse       #?url反向查询
 from management.utils import permission_check      #导入自定义函数，验证用户权限
 import models
@@ -207,13 +207,6 @@ def sub_comment(request):
     print request.POST
     book_id = request.POST.get('book_id')
     comment = request.POST.get('comment_content')
-    # Comment.models.Comment.objects.create(
-    #     content_type_id = 8,
-    #     object_id = book_id,
-    #     site_id =1,
-    #     user = request.user,
-    #     comment = comment,
-    #  )
     new_comment = Comment.objects.create(
                 content_type_id= 8,
                 object_pk = int(book_id),
@@ -221,5 +214,50 @@ def sub_comment(request):
                 user = request.user,
                 comment = comment,
        )
+    print "*************************"
     new_comment.save()
-    return HttpResponseRedirect('/view_book/detail/?id=%s' % book_id)
+    return HttpResponseRedirect('/view_book/detail?id=%s' % book_id)
+
+def wordslist(request):
+    user = request.user if request.user.is_authenticated() else None
+    classs = request.GET.get('classs', '')
+    n = request.POST.get('num')
+    words = word.objects.filter(classs__contains = classs)[:n]
+    content = {
+        'user': user,
+        'words': words,
+    }
+    return render(request, 'management/wordslist.html', content)
+
+def worddetail(request):
+    user = request.user if request.user.is_authenticated() else None
+    word_id = request.GET.get('id', '')
+    if word_id == '':
+        return HttpResponseRedirect(reverse('wordslist'))
+    word1 = word.objects.get(pk=word_id)  #注意这里是pk!
+    key = word1.kword                     #取出关键字
+    swords = word.objects.filter(kword__contains = key).exclude(id = word_id)[:2]  #按照一个不合理需求，仅仅给出俩个近义词.
+    content = {                                                                    #排除本单词本身
+        'user': user,
+        'word': word1,
+        'swords':swords
+    }
+    return render(request, 'management/worddetail.html', content)
+
+
+def sub_comment2(request):
+    print request.POST
+    word_id = request.POST.get('word_id')
+    comment = request.POST.get('comment_content')
+    new_comment = Comment.objects.create(
+                content_type_id= 13,  #这个id我真是醉了
+                object_pk = int(word_id),
+                site_id = 1,
+                user = request.user,
+                comment = comment,
+       )
+    new_comment.save()
+    print "********************************"
+    return HttpResponseRedirect('/worddetail/?id=%s' % word_id)
+
+

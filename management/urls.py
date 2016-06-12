@@ -14,4 +14,7 @@ urlpatterns = [
     url(r'^view_book_list/$', views.view_book_list, name='view_book_list'),
     url(r'^view_book/detail/$', views.detail, name='detail'),
     url(r'^sub_comment/$', views.sub_comment, name='sub_comment'),
+    url(r'^wordslist/$',views.wordslist,name='wordslist'),
+    url(r'^worddetail/$', views.worddetail, name='worddetail'),
+    url(r'^sub_comment2/$', views.sub_comment2, name='sub_comment2'),
 ]

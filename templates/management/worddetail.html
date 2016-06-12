@@ -1,0 +1,51 @@
+{% extends "management/base.html" %}
+{% load staticfiles %}
+{% load comments %}
+{% block title %}查看单词{% endblock %}
+
+{% block content %}
+    <div class="container">
+        <div class="row">
+            <div class="col-md-10 col-md-offset-1">
+                <div class="col-md-6 col-md-offset-1">
+                    <h2 class="text-center">{{ word.ename }}</h2>
+                    <br>
+                    <h3>英文：{{ word.eword }}</h3>
+                    <h3>中文：{{ word.cword }}</h3>
+                    <h3>例句：{{ word.sentence }}</h3>
+                    {%for sword in swords %}
+                        <h3>近义词：{{ sword }}</h3>
+                    {% endfor %}
+                </div>
+            </div>
+        </div>
+    </div>
+   <hr>
+    <form action="/sub_comment2/" method="post">
+        <textarea cols=80 row=3 name='comment_content'></textarea>
+        <input type="hidden" name="word_id" value="{{word.id}}"/>
+        <input type="submit" value="做笔记" id="id_submit">
+    </form>
+    <hr>
+<div>
+    {% get_comment_count for word as comment_count %}
+    <h4>所有人的笔记：{{ comment_count }}</h4>
+</div>
+
+<div>
+<hr>
+<h3>
+{% get_comment_list for word as comment_list %}
+    {% for comment in comment_list reversed %}
+        {{ comment.submit_date}}
+        <br>
+        From:  {{ comment.name}}
+        <br>
+        {{comment.comment}}
+        <hr>
+        <hr>
+    {% endfor %}
+</h3>
+</div>
+
+{% endblock %}

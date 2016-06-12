@@ -41,3 +41,16 @@ class Img(models.Model):
 
     def __unicode__(self):
         return self.name
+
+class word(models.Model):
+    eword = models.CharField(max_length=128)
+    cword = models.CharField(max_length=128)
+    kword = models.CharField(max_length=128)
+    sentence = models.CharField(max_length=128)
+    classs = models.CharField(max_length=128)    #以此来分类，而不是为每个分类建一张表
+
+    def __unicode__(self):
+        return self.eword
+
+
+
