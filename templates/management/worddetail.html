@@ -14,9 +14,17 @@
                     <h3>中文：{{ word.cword }}</h3>
                     <h3>例句：{{ word.sentence }}</h3>
                     {%for sword in swords %}
-                        <h3>近义词：{{ sword }}</h3>
+                        <h3>近义词：{{ sword }}（暂时不可点...）</h3>
                     {% endfor %}
                 </div>
+                <form action="/setflag/" method="post">
+                    <input type="hidden" name="word_id" value="{{ word.id }}"/>
+                    <input type="submit" value="我已经记住了（点击之后不会在wordslist中出现)" id="id_submit">
+                </form>
+                <form action="/nextone/" method="post">
+                    <input type="hidden" name="word_id" value="{{ word.id }}"/>
+                    <input type="submit" value="下一个" id="id_submit">
+                </form>
             </div>
         </div>
     </div>

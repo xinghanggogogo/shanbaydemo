@@ -43,11 +43,12 @@ class Img(models.Model):
         return self.name
 
 class word(models.Model):
-    eword = models.CharField(max_length=128)
-    cword = models.CharField(max_length=128)
-    kword = models.CharField(max_length=128)
+    eword = models.CharField(max_length=128)     #英文
+    cword = models.CharField(max_length=128)     #中文
+    kword = models.CharField(max_length=128)     #关键字：用来查找近义词
     sentence = models.CharField(max_length=128)
     classs = models.CharField(max_length=128)    #以此来分类，而不是为每个分类建一张表
+    flag = models.IntegerField(default = 0)      #会背了就不让这个单词出现了，目前并没有支持多用户...可是我知道这很简单。
 
     def __unicode__(self):
         return self.eword

@@ -17,4 +17,7 @@ urlpatterns = [
     url(r'^wordslist/$',views.wordslist,name='wordslist'),
     url(r'^worddetail/$', views.worddetail, name='worddetail'),
     url(r'^sub_comment2/$', views.sub_comment2, name='sub_comment2'),
+    url(r'^setflag/$', views.setflag, name='setflag'),
+    url(r'^nextone/$', views.nextone, name='nextone'),
+    url(r'^numerror/$', views.numerror, name='numerror'),
 ]

@@ -219,15 +219,19 @@ def sub_comment(request):
     return HttpResponseRedirect('/view_book/detail?id=%s' % book_id)
 
 def wordslist(request):
-    user = request.user if request.user.is_authenticated() else None
-    classs = request.GET.get('classs', '')
-    n = request.POST.get('num')
-    words = word.objects.filter(classs__contains = classs)[:n]
-    content = {
-        'user': user,
-        'words': words,
-    }
-    return render(request, 'management/wordslist.html', content)
+    try:
+        user = request.user if request.user.is_authenticated() else None
+        classs = request.GET.get('classs', '')
+        n = request.POST.get('num')
+        words = word.objects.filter(classs__contains = classs)[:n].exclude(flag = 1)
+        content = {
+         'user': user,
+         'words': words,
+        }
+        return render(request, 'management/wordslist.html', content)
+    except:
+        #健壮性考虑，避免用户输入过大的单词数目
+        return HttpResponseRedirect(reverse('numerror'))
 
 def worddetail(request):
     user = request.user if request.user.is_authenticated() else None
@@ -257,7 +261,39 @@ def sub_comment2(request):
                 comment = comment,
        )
     new_comment.save()
-    print "********************************"
     return HttpResponseRedirect('/worddetail/?id=%s' % word_id)
 
+def setflag(request):
+    user = request.user if request.user.is_authenticated() else None #数据库中就一张表，所以这句话并没有什么意义
+    word_id = request.POST.get('word_id')
+    print word_id
+    word.objects.filter(pk= word_id).update(flag = 1)
+    return HttpResponseRedirect(reverse('wordslist'))
+
+def nextone(request):
+    try:
+        user = request.user if request.user.is_authenticated() else None
+        word_id = request.POST.get('word_id')
+        word_id = int(word_id) + 1   #int
+        word1 = word.objects.get(pk=word_id)
+        while (word1.flag):
+            word_id = word_id + 1
+            word1 = word.objects.get(pk=word_id)
+        key = word1.kword    #取出关键字
+        swords = word.objects.filter(kword__contains = key).exclude(id = word_id)[:2]  #按照一个不合理需求，仅仅给出俩个近义词.
+        content = {
+            'user': user,
+            'word': word1,
+            'swords':swords
+        }
+        return render(request, 'management/worddetail.html', content)
+    except:  #健壮性考虑，背完了路由重定向至主页
+        return HttpResponseRedirect(reverse('homepage'))
+
+def numerror(request):
+    user = request.user if request.user.is_authenticated() else None
+    content = {
+        'user': user,
+    }
+    return render(request, 'management/numerror.html', content)
 
