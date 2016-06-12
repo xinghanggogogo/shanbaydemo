@@ -3,6 +3,7 @@
   <component name="ChangeListManager">
     <list default="true" id="371c0875-664d-46f5-9db2-ecbcf0c722f4" name="Default" comment="">
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/../LibraryManagement/db.sqlite3" afterPath="$PROJECT_DIR$/../LibraryManagement/db.sqlite3" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/db.sqlite3" afterPath="$PROJECT_DIR$/db.sqlite3" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/../LibraryManagement/.idea/LibraryManagement.iml" afterPath="$PROJECT_DIR$/../LibraryManagement/.idea/LibraryManagement.iml" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/../LibraryManagement/.idea/workspace.xml" afterPath="$PROJECT_DIR$/../LibraryManagement/.idea/workspace.xml" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/../LibraryManagement/LM/settings.py" afterPath="$PROJECT_DIR$/../LibraryManagement/LM/settings.py" />
@@ -15,14 +16,7 @@
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/../LibraryManagement/templates/management/detail.html" afterPath="$PROJECT_DIR$/../LibraryManagement/templates/management/detail.html" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/../LibraryManagement/templates/management/index.html" afterPath="$PROJECT_DIR$/../LibraryManagement/templates/management/index.html" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/../LibraryManagement/templates/management/view_book_list.html" afterPath="$PROJECT_DIR$/../LibraryManagement/templates/management/view_book_list.html" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/management/admin.py" afterPath="$PROJECT_DIR$/management/admin.py" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/management/models.py" afterPath="$PROJECT_DIR$/management/models.py" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/management/views.py" afterPath="$PROJECT_DIR$/management/views.py" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/shanbaydemo/settings.py" afterPath="$PROJECT_DIR$/shanbaydemo/settings.py" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/shanbaydemo/urls.py" afterPath="$PROJECT_DIR$/shanbaydemo/urls.py" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/templates/management/add_book.html" afterPath="$PROJECT_DIR$/templates/management/add_book.html" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/templates/management/view_book_list.html" afterPath="$PROJECT_DIR$/templates/management/view_book_list.html" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/README.md" afterPath="$PROJECT_DIR$/README.md" />
     </list>
     <ignored path="shanbaydemo.iws" />
     <ignored path=".idea/workspace.xml" />
@@ -59,11 +53,21 @@
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="admin.py" pinned="false" current-in-tab="true">
+      <file leaf-file-name="admin.py" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/management/admin.py">
           <provider selected="true" editor-type-id="text-editor">
             <state relative-caret-position="30">
               <caret line="4" column="13" selection-start-line="4" selection-start-column="13" selection-end-line="4" selection-end-column="13" />
+              <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="README.md" pinned="false" current-in-tab="true">
+        <entry file="file://$PROJECT_DIR$/../LibraryManagement/README.md">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="288">
+              <caret line="66" column="3" selection-start-line="66" selection-start-column="0" selection-end-line="75" selection-end-column="25" />
               <folding />
             </state>
           </provider>
@@ -123,7 +127,7 @@
     </option>
   </component>
   <component name="Git.Settings">
-    <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
+    <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$/../LibraryManagement" />
   </component>
   <component name="IdeDocumentHistory">
     <option name="CHANGED_PATHS">
@@ -156,8 +160,8 @@
   <component name="ProjectFrameBounds">
     <option name="x" value="65" />
     <option name="y" value="24" />
-    <option name="width" value="735" />
-    <option name="height" value="576" />
+    <option name="width" value="1301" />
+    <option name="height" value="744" />
   </component>
   <component name="ProjectLevelVcsManager" settingsEditedManually="true">
     <OptionsSetting value="true" id="Add" />
@@ -538,10 +542,10 @@
     <servers />
   </component>
   <component name="ToolWindowManager">
-    <frame x="65" y="24" width="735" height="576" extended-state="6" />
+    <frame x="65" y="24" width="1301" height="744" extended-state="6" />
     <editor active="true" />
     <layout>
-      <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.3280116" sideWeight="0.5" order="0" side_tool="false" content_ui="combo" />
+      <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.18007968" sideWeight="0.5" order="0" side_tool="false" content_ui="combo" />
       <window_info id="TODO" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="6" side_tool="false" content_ui="tabs" />
       <window_info id="Event Log" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="7" side_tool="true" content_ui="tabs" />
       <window_info id="Database" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
@@ -625,6 +629,7 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="420">
           <caret line="28" column="0" selection-start-line="27" selection-start-column="0" selection-end-line="43" selection-end-column="78" />
+          <folding />
         </state>
       </provider>
     </entry>
@@ -762,14 +767,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/../LibraryManagement/README.md">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="1290">
-          <caret line="86" column="6" selection-start-line="86" selection-start-column="5" selection-end-line="86" selection-end-column="14" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/../LibraryManagement/LM/settings.py">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="90">
@@ -868,6 +865,14 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="30">
           <caret line="4" column="13" selection-start-line="4" selection-start-column="13" selection-end-line="4" selection-end-column="13" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/../LibraryManagement/README.md">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="288">
+          <caret line="66" column="3" selection-start-line="66" selection-start-column="0" selection-end-line="75" selection-end-column="25" />
           <folding />
         </state>
       </provider>
