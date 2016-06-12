@@ -22,7 +22,7 @@ python2.7+django1.9.7
 * 图书分类列表随添加的图书而改变。
 * 检索支持对图书名的模糊检索。
 * 图书分页为每页5个。
-* 搜索框自动提交的时间为距离上次按键抬起1.5
+
 
 * Models模型字段用法，外键关系用法。 [文档](https://docs.djangoproject.com/en/1.9/topics/db/models/)
 
