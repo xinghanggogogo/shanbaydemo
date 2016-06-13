@@ -222,7 +222,7 @@ def wordslist(request):
         user = request.user if request.user.is_authenticated() else None
         classs = request.GET.get('classs', '')
         n = request.POST.get('num')
-        words = word.objects.filter(classs__contains = classs)[:n].exclude(flag = 1)
+        words = word.objects.filter(classs__contains = classs)[:n].exclude(flag = 1)  #被标记记住了就不再出现
         content = {
          'user': user,
          'words': words,
