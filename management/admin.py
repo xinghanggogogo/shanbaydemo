@@ -9,7 +9,6 @@ class MyUserInline(admin.StackedInline):
     model = MyUser
     can_delete = False
 
-
 class UserAdmin(BaseUserAdmin):
     inlines = (MyUserInline,)
 

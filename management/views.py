@@ -177,7 +177,7 @@ def detail(request):
     return render(request, 'management/detail.html', content)
 
 
-@user_passes_test(permission_check)
+@user_passes_test(permission_check)  #装饰器，只有权限>1才能实现添加图片的功能
 def add_img(request):
     user = request.user
     state = None
@@ -203,7 +203,7 @@ def add_img(request):
     }
     return render(request, 'management/add_img.html', content)
 
-def sub_comment(request):
+def sub_comment(request): #实现对单词书的评论功能
     print request.POST
     book_id = request.POST.get('book_id')
     comment = request.POST.get('comment_content')
@@ -214,7 +214,6 @@ def sub_comment(request):
                 user = request.user,
                 comment = comment,
        )
-    print "*************************"
     new_comment.save()
     return HttpResponseRedirect('/view_book/detail?id=%s' % book_id)
 
@@ -241,7 +240,7 @@ def worddetail(request):
     word1 = word.objects.get(pk=word_id)  #注意这里是pk!
     key = word1.kword                     #取出关键字
     swords = word.objects.filter(kword__contains = key).exclude(id = word_id)[:2]  #按照一个不合理需求，仅仅给出俩个近义词.
-    content = {                                                                    #排除本单词本身
+    content = {                                                                    #并且排除本单词本身
         'user': user,
         'word': word1,
         'swords':swords
@@ -249,7 +248,7 @@ def worddetail(request):
     return render(request, 'management/worddetail.html', content)
 
 
-def sub_comment2(request):
+def sub_comment2(request): #单词详情页实现笔记功能
     print request.POST
     word_id = request.POST.get('word_id')
     comment = request.POST.get('comment_content')
@@ -263,14 +262,14 @@ def sub_comment2(request):
     new_comment.save()
     return HttpResponseRedirect('/worddetail/?id=%s' % word_id)
 
-def setflag(request):
-    user = request.user if request.user.is_authenticated() else None #数据库中就一张表，所以这句话并没有什么意义
+def setflag(request):  #标记这个单词我已经会背了
+    user = request.user if request.user.is_authenticated() else None #数据库中就一张单词表，没有针对用户，所以这句话并没有什么意义
     word_id = request.POST.get('word_id')
     print word_id
     word.objects.filter(pk= word_id).update(flag = 1)
     return HttpResponseRedirect(reverse('wordslist'))
 
-def nextone(request):
+def nextone(request): #实现单词的详情页的翻页
     try:
         user = request.user if request.user.is_authenticated() else None
         word_id = request.POST.get('word_id')
